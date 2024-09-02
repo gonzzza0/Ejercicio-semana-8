@@ -16,6 +16,12 @@ function showData(dataArray) {
     // En la siguiente línea se utilizan "backticks" para armar el String. Más info => https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Template_literals
     container.innerHTML += `<p> ${item.name} ${item.lastname} </p>`; // Se concatena cada párrafo de la manera que queremos mostrarlo al innerHTML del contenedor
   }
-}
+} fetch(DATA_URL)
+.then(response=>response.json())
+.then(data=>{
+  localStorage.setItem("estudiantes", JSON.stringify(data.students));
+})
 
+let estudiantes = JSON.parse(localStorage.getItem("estudiantes"));
+showData(estudiantes)
 // Escribe el código necesario para realizar el fetch al archivo con los datos y mostrar los estudiantes con la función showData
